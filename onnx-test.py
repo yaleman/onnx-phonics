@@ -1,3 +1,9 @@
+""" silliness using python to create an onnx model
+
+from <https://onnx.ai/onnx/intro/python.html>
+
+"""
+
 from onnx import TensorProto
 from onnx.helper import (
     make_model, make_node, make_graph,
@@ -5,11 +11,11 @@ from onnx.helper import (
 from onnx.checker import check_model
 
 # inputs
-
 X_NAME = "Drews_Height"
 Y_NAME = "Drews_Squat"
 ADDITIONAL_WIN = "Magic"
 RESULT_NODE = "Partial_Baguette"
+
 # 'X' is the name, TensorProto.FLOAT the type, [None, None] the shape
 X = make_tensor_value_info(X_NAME, TensorProto.INT8, [None, None])
 A = make_tensor_value_info(Y_NAME, TensorProto.FLOAT, [None, None])
@@ -37,17 +43,12 @@ graph = make_graph([node1, node2],  # nodes
 
 # onnx graph
 # there is no metadata in this case.
-
 onnx_model = make_model(graph)
 
 # Let's check the model is consistent,
 # this function is described in section
 # Checker and Shape Inference.
 check_model(onnx_model)
-
-# the work is done, let's display it...
-# print(onnx_model)
-
 
 # The serialization
 filename = "squat_model.onnx"
