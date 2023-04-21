@@ -8,23 +8,23 @@ from onnx.checker import check_model
 
 X_NAME = "Drews_Height"
 Y_NAME = "Drews_Squat"
-B_NAME = "Partial_Baguette"
-
+ADDITIONAL_WIN = "Magic"
+RESULT_NODE = "Partial_Baguette"
 # 'X' is the name, TensorProto.FLOAT the type, [None, None] the shape
 X = make_tensor_value_info(X_NAME, TensorProto.INT8, [None, None])
 A = make_tensor_value_info(Y_NAME, TensorProto.FLOAT, [None, None])
-B = make_tensor_value_info('B', TensorProto.FLOAT, [None, None])
+B = make_tensor_value_info(ADDITIONAL_WIN, TensorProto.FLOAT, [None, None])
 
 # outputs, the shape is left undefined
 
-Y = make_tensor_value_info(B_NAME, TensorProto.FLOAT, [None])
+Y = make_tensor_value_info(RESULT_NODE, TensorProto.FLOAT, [None])
 
 # nodes
 
 # It creates a node defined by the operator type MatMul,
 # 'X', 'A' are the inputs of the node, 'XA' the output.
 node1 = make_node('MatMul', [X_NAME, Y_NAME], ['XA'])
-node2 = make_node('Add', ['XA', 'B'], [B_NAME])
+node2 = make_node('Add', ['XA', ADDITIONAL_WIN], [RESULT_NODE])
 
 # from nodes to graph
 # the graph is built from the list of nodes, the list of inputs,
