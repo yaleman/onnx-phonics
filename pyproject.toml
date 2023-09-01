@@ -17,7 +17,7 @@ onnx = "^1.14.0"
 [tool.poetry.group.dev.dependencies]
 black = "^23.7.0"
 mypy = "^1.5.1"
-ruff = "^0.0.285"
+ruff = "^0.0.286"
 pytest = "^7.4.0"
 
 [build-system]
