@@ -12,7 +12,7 @@ packages = [
 
 [tool.poetry.dependencies]
 python = "^3.10"
-onnx = "^1.14.1"
+onnx = "^1.15.0"
 
 [tool.poetry.group.dev.dependencies]
 black = "^23.10.0"
